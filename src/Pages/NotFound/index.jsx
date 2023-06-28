@@ -1,9 +1,9 @@
 import React from 'react'
 
-function index() {
+function NotFound() {
   return (
-    <div>index</div>
+    <div>NotFound</div>
   )
 }
 
-export default index
+export default NotFound

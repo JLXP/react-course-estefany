@@ -1,9 +1,9 @@
 import React from 'react'
 
-function index() {
+function SignIn() {
   return (
-    <div>index</div>
+    <div>SignIn</div>
   )
 }
 
-export default index
+export default SignIn
