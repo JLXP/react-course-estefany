@@ -25,7 +25,6 @@ const App = () => {
     <BrowserRouter>
       <NavBar />
       <AppRoutes />
-
     </BrowserRouter>
   )
 }
