@@ -7,7 +7,6 @@ import MyOrders from "../MyOrders"
 import NotFound from "../NotFound"
 import NavBar from "../../components/Navbar"
 import SignIn from "../SignIn"
-import ProductDetail from "../../components/ProductDetail"
 
 const AppRoutes = () => {
   let routes = useRoutes([
@@ -27,7 +26,6 @@ const App = () => {
     <ShoppingCartProvider>
       <BrowserRouter>
         <NavBar />
-        <ProductDetail />
         <AppRoutes />
       </BrowserRouter>
     </ShoppingCartProvider>

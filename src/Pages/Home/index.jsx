@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Layout from '../../components/Layout'
 import Card from '../../components/Card'
+import ProductDetail from '../../components/ProductDetail'
 import { api } from '../../api'
 
 const Home = () => {
@@ -23,6 +24,7 @@ const Home = () => {
 
   return (
     <Layout>
+      <ProductDetail/>
       <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
         {
           items?.map((item) => {
