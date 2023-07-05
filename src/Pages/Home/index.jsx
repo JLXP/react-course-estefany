@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Layout from '../../components/Layout'
 import Card from '../../components/Card'
-import ProductDetail from '../../components/ProductDetail'
 import { api } from '../../api'
 
 const Home = () => {
@@ -31,7 +30,6 @@ const Home = () => {
           })
         }
       </div>
-      <ProductDetail/>
     </Layout>
   )
 }
