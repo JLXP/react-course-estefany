@@ -4,6 +4,7 @@ import Card from '../../components/Card'
 import ProductDetail from '../../components/ProductDetail'
 import { api } from '../../api'
 
+
 const Home = () => {
   const [items, setItems] = useState(null);
 
@@ -11,7 +12,6 @@ const Home = () => {
     try {
       const response = await fetch(`${api}/products`)
       const data = await response.json()
-      console.log(data)
       setItems(data)
     } catch (error) {
       console.error(`Oh no, ocurrió un error: ${error}`);
