@@ -6,10 +6,10 @@ import { NavLink } from "react-router-dom"
 let menu1 = [
     { to: '/', text: 'Shopi', className: 'font-semibold text-lg' },
     { to: '/', text: 'All', className: '' },
-    { to: '/clothes', text: 'Clothes', className: '' },
+    { to: '/jewelery', text: 'Jewelery', className: '' },
+    { to: '/mens-clothing', text: "Men's clothing", className: '' },
     { to: '/electronics', text: 'Electronics', className: '' },
-    { to: '/furnitures', text: 'Furnitures', className: '' },
-    { to: '/toys', text: 'Toys', className: '' },
+    { to: '/womens-clothing', text: "Women's clothing", className: '' },
     { to: '/others', text: 'Others', className: '' },
 ]
 
@@ -31,9 +31,16 @@ const NavBar = () => {
                 {menu1.map(link => (
                     <li key={link.text} className={link.className}>
                         <NavLink to={link.to} className={({ isActive }) => {
-                            if (isActive && link.text !== "Shopi") { return textDecoration; }
+                            if (isActive && link.text !== "Shopi") { return textDecoration }
                             return undefined;
-                        }}>
+                        }}
+                            onClick={() => {
+                                if (link?.text !== "Shopi" && link?.text !== "All") { 
+                                    context.setSearchByCategory(link?.text)
+                                 }
+                                return undefined;
+                            }}
+                        >
                             {link.text}
                         </NavLink>
                     </li>

@@ -1,37 +1,46 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext } from 'react'
+import { ShoppingCartContext } from '../../Context'
 import Layout from '../../components/Layout'
 import Card from '../../components/Card'
 import ProductDetail from '../../components/ProductDetail'
-import { api } from '../../api'
 
 
 const Home = () => {
-  const [items, setItems] = useState(null);
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch(`${api}/products`)
-      const data = await response.json()
-      setItems(data)
-    } catch (error) {
-      console.error(`Oh no, ocurrió un error: ${error}`);
+  const context = useContext(ShoppingCartContext)
+  const renderView = () => {
+    if (context.searchByTitle?.length > 0) {
+      if (context.filteredItems?.length > 0) {
+        return (
+          context.filteredItems?.map((item) => {
+            return <Card key={item.id} {...item} />
+          })
+        )
+      }else{
+        return(
+          <div>We don´t have anything :( </div>
+        )
+      }
+    } else {
+      return (
+        context.items?.map((item) => {
+          return <Card key={item.id} {...item} />
+        })
+      )
     }
   }
 
-  useEffect(() => {
-    fetchData()
-  }, []);
-
   return (
     <Layout>
-      <ProductDetail/>
-      <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
-        {
-          items?.map((item) => {
-            return <Card key={item.id} {...item} />
-          })
-        }
+      <div className='flex justify-center items-center w-80 relative m-b4'>
+        <h1 className='font-medium text-xl'>
+          Exclusive Products
+        </h1>
       </div>
+      <input type="text" placeholder='Search a product' className='rounded-lg border border-black w-80 p-4 mb-4 focus:outline-none' onChange={(event) => context.setSearchByTitle(event.target.value)} />
+      <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
+        {renderView()}
+      </div>
+      <ProductDetail />
     </Layout>
   )
 }
