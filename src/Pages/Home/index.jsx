@@ -8,7 +8,6 @@ import ProductDetail from '../../components/ProductDetail'
 const Home = () => {
   const context = useContext(ShoppingCartContext)
   const renderView = () => {
-    if (context.searchByTitle?.length > 0) {
       if (context.filteredItems?.length > 0) {
         return (
           context.filteredItems?.map((item) => {
@@ -20,13 +19,6 @@ const Home = () => {
           <div>We don´t have anything :( </div>
         )
       }
-    } else {
-      return (
-        context.items?.map((item) => {
-          return <Card key={item.id} {...item} />
-        })
-      )
-    }
   }
 
   return (
